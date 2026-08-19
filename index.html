@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#0a0710">
+<title>Untuk Sayang ♡</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;padding:0;background:#09070d;color:#fff}
+body{font-family:Georgia,"Times New Roman",serif;overflow-x:hidden}
+body.locked{overflow:hidden}
+
+:root{
+  --pink:#f2b2ca;
+  --soft:#ead7df;
+  --line:#ffffff20;
+  --glass:#ffffff0d;
+}
+
+/* ===== BACKGROUND ===== */
+.page-bg{
+  position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(circle at 18% 8%,#48243f 0,transparent 30%),
+    radial-gradient(circle at 85% 72%,#29234b 0,transparent 35%),
+    linear-gradient(180deg,#100812,#07060b 55%,#0b0812);
+}
+#particles{position:fixed;inset:0;pointer-events:none;z-index:20;overflow:hidden}
+.particle{
+  position:absolute;bottom:-40px;color:#efabc5;
+  text-shadow:0 0 15px #efabc566;
+  animation:float linear infinite;opacity:0
+}
+@keyframes float{
+  0%{transform:translate3d(0,30px,0) rotate(0);opacity:0}
+  12%{opacity:.65}
+  100%{transform:translate3d(var(--dx),-115vh,0) rotate(280deg);opacity:0}
+}
+
+/* ===== INTRO ===== */
+#intro{
+  position:fixed;inset:0;z-index:100;
+  display:flex;align-items:center;justify-content:center;
+  background:
+    radial-gradient(circle at 50% 38%,#3b1b36 0,transparent 40%),
+    #08060c;
+  transition:opacity .7s ease,visibility .7s ease
+}
+#intro.hide{opacity:0;visibility:hidden;pointer-events:none}
+.intro-inner{text-align:center;padding:24px}
+.envelope{
+  width:min(78vw,430px);aspect-ratio:1.59;
+  position:relative;margin:auto;cursor:pointer;
+  filter:drop-shadow(0 25px 35px #0009)
+}
+.env-body{
+  position:absolute;inset:0;border-radius:16px;
+  background:linear-gradient(145deg,#f7d4e1,#a95c82);
+  overflow:hidden
+}
+.env-body:after,.env-body:before{
+  content:"";position:absolute;bottom:0;width:72%;height:100%;
+  background:#d88eaa;opacity:.7
+}
+.env-body:before{left:0;clip-path:polygon(0 100%,100% 100%,0 25%)}
+.env-body:after{right:0;clip-path:polygon(0 100%,100% 100%,100% 25%)}
+.flap{
+  position:absolute;z-index:2;inset:0 0 auto;height:68%;
+  background:#efb4c9;clip-path:polygon(0 0,100% 0,50% 78%);
+  border-radius:16px 16px 0 0
+}
+.seal{
+  position:absolute;z-index:5;left:50%;top:57%;
+  transform:translate(-50%,-50%);
+  width:74px;height:74px;border-radius:50%;
+  display:grid;place-items:center;
+  background:#a64e77;color:white;font-size:38px;
+  box-shadow:0 8px 25px #0005
+}
+.intro-kicker{font:10px Arial,sans-serif;letter-spacing:.35em;color:#cda8b9;margin-top:25px}
+.intro-hint{font:11px Arial,sans-serif;letter-spacing:.2em;color:#aaa;margin-top:10px}
+
+/* ===== FIREWORK TRANSITION ===== */
+#fireworks{
+  position:fixed;inset:0;z-index:110;display:none;
+  background:#08060d;pointer-events:none
+}
+.burst{position:absolute;width:5px;height:5px;border-radius:50%}
+.spark{
+  position:absolute;width:4px;height:4px;border-radius:50%;
+  left:0;top:0;background:currentColor;
+  animation:shoot 1s ease-out forwards
+}
+@keyframes shoot{
+  0%{transform:rotate(var(--a)) translateX(0);opacity:1}
+  100%{transform:rotate(var(--a)) translateX(var(--d));opacity:0}
+}
+
+/* ===== SCROLL SECTIONS — 9:16 FEEL ===== */
+main{width:100%;max-width:680px;margin:0 auto}
+section.page{
+  position:relative;
+  width:100%;
+  min-height:100svh;
+  padding:58px 22px 72px;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+  scroll-snap-align:start
+}
+.page-inner{
+  width:100%;
+  min-height:calc(100svh - 130px);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center
+}
+.kicker{
+  font:10px Arial,sans-serif;letter-spacing:.35em;
+  text-transform:uppercase;color:var(--pink);
+  margin-bottom:15px
+}
+h1{
+  font-size:clamp(50px,15vw,88px);
+  line-height:.92;font-weight:400;font-style:italic;
+  margin:0 0 24px
+}
+h2{
+  font-size:clamp(34px,9vw,58px);
+  line-height:1.02;font-weight:400;font-style:italic;
+  margin:0 0 20px
+}
+p{
+  width:min(100%,560px);font-size:17px;line-height:1.7;
+  color:#ddd;margin:0
+}
+.scroll-note{
+  margin-top:30px;font:9px Arial,sans-serif;
+  letter-spacing:.25em;color:#777
+}
+.down{
+  display:block;width:1px;height:42px;background:#ffffff35;
+  margin:12px auto 0;position:relative
+}
+.down:after{
+  content:"";position:absolute;bottom:0;left:-3px;
+  width:7px;height:7px;border-right:1px solid #fff6;
+  border-bottom:1px solid #fff6;transform:rotate(45deg)
+}
+
+/* ===== MUSIC ===== */
+.music-box{
+  width:min(100%,520px);padding:28px 22px;
+  border:1px solid var(--line);background:var(--glass);
+  border-radius:26px;backdrop-filter:blur(12px);
+  box-shadow:0 20px 50px #0005
+}
+.music-btn{
+  border:1px solid #ffffff35;background:#ffffff12;color:white;
+  border-radius:999px;padding:15px 26px;
+  font:11px Arial,sans-serif;letter-spacing:.18em;
+  text-transform:uppercase
+}
+.music-status{font:10px Arial;color:#aaa;margin-top:15px}
+
+/* ===== REASONS ===== */
+.reasons{
+  width:100%;display:grid;grid-template-columns:1fr;gap:12px;
+  margin-top:8px
+}
+.reason{
+  padding:19px 20px;border-radius:20px;
+  border:1px solid var(--line);background:var(--glass);
+  text-align:left
+}
+.reason b{
+  display:block;color:var(--pink);
+  font:10px Arial,sans-serif;letter-spacing:.15em;margin-bottom:8px
+}
+.reason span{font-size:15px;line-height:1.55;color:#ddd}
+
+/* ===== MEMORY ===== */
+.memory-title{margin-bottom:16px}
+.memory-grid{
+  width:min(100%,520px);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  position:relative;
+  padding:0
+}
+.memory-card{
+  width:100%;aspect-ratio:1/1;
+  border-radius:20px;overflow:hidden;
+  border:1px solid #ffffff25;background:#111;
+  box-shadow:0 18px 35px #0008
+}
+.memory-card img,.memory-card video{
+  display:block;width:100%;height:100%;object-fit:cover
+}
+.memory-video{
+  position:absolute;
+  width:calc((100% - 12px)/2);
+  aspect-ratio:1/1;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  z-index:4
+}
+.memory-note{
+  margin-top:18px;font:9px Arial,sans-serif;
+  letter-spacing:.18em;color:#777
+}
+
+/* ===== QUOTE / FINAL ===== */
+.quote{
+  width:min(100%,590px);
+  font-size:clamp(28px,7vw,43px);
+  line-height:1.35;font-style:italic
+}
+.final-heart{font-size:82px;margin-bottom:12px;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.1)}}
+.divider{
+  width:60px;height:1px;background:#ffffff30;margin:25px auto
+}
+
+/* desktop: tetap 9:16, tapi jangan membesar melebihi tinggi layar */
+@media(min-width:700px){
+  main{max-width:680px}
+  section.page{min-height:100vh}
+}
+
+/* sangat kecil */
+@media(max-height:700px){
+  section.page{padding-top:38px;padding-bottom:50px}
+  .page-inner{min-height:calc(100svh - 88px)}
+}
+</style>
+</head>
+
+<body class="locked">
+<div class="page-bg"></div>
+<div id="particles"></div>
+
+<!-- INTRO: SATU-SATUNYA BAGIAN DENGAN TRANSISI -->
+<div id="intro">
+  <div class="intro-inner">
+    <div class="envelope" onclick="openLetter()">
+      <div class="env-body"></div>
+      <div class="flap"></div>
+      <div class="seal">♡</div>
+    </div>
+    <div class="intro-kicker">A LITTLE LETTER FOR YOU</div>
+    <div class="intro-hint">KLIK UNTUK MEMBUKA</div>
+  </div>
+</div>
+
+<div id="fireworks"></div>
+
+<main>
+
+  <!-- 01 WELCOME -->
+  <section class="page">
+    <div class="page-inner">
+      <div class="kicker">WELCOME</div>
+      <div class="final-heart">♡</div>
+      <h1>Welcome,<br>Sayang.</h1>
+      <p>
+        Aku bikin halaman kecil ini karena ada banyak hal yang ingin aku sampaikan.
+        Mungkin nggak semuanya bisa aku bilang langsung, jadi biar halaman ini
+        yang bercerita untukku.
+      </p>
+      <div class="scroll-note">SCROLL KE BAWAH</div>
+      <div class="down"></div>
+    </div>
+  </section>
+
+  <!-- 02 MUSIC -->
+  <section class="page">
+    <div class="page-inner">
+      <div class="kicker">CHAPTER 01</div>
+      <h2>Putar musiknya dulu ♡</h2>
+      <div class="music-box">
+        <p>Ganti file <b>music.mp3</b> dengan lagu yang kamu pilih.</p>
+        <br>
+        <button class="music-btn" onclick="toggleMusic()">♫ PLAY OUR SONG</button>
+        <div id="musicStatus" class="music-status">MUSIC OFF</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 REASONS -->
+  <section class="page">
+    <div class="page-inner">
+      <div class="kicker">CHAPTER 02</div>
+      <h2>Hal yang aku suka dari kamu</h2>
+      <div class="reasons">
+        <div class="reason">
+          <b>01 — YOUR SMILE</b>
+          <span>Senyummu punya cara sendiri untuk membuat hari yang biasa terasa jauh lebih indah.</span>
+        </div>
+        <div class="reason">
+          <b>02 — YOUR LITTLE THINGS</b>
+          <span>Hal-hal kecil yang mungkin kamu anggap biasa, justru sering aku simpan paling lama di hati.</span>
+        </div>
+        <div class="reason">
+          <b>03 — YOUR PRESENCE</b>
+          <span>Kehadiranmu saja sudah cukup untuk membuat aku merasa tenang.</span>
+        </div>
+        <div class="reason">
+          <b>04 — SIMPLY YOU</b>
+          <span>Kamu nggak perlu berubah menjadi siapa-siapa untuk menjadi berarti.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 QUOTE -->
+  <section class="page">
+    <div class="page-inner">
+      <div class="kicker">CHAPTER 03</div>
+      <div class="quote">
+        “Aku suka cara kita punya cerita sendiri.
+        Ada momen kecil yang mungkin biasa untuk orang lain,
+        tapi berarti banget buat aku.”
+      </div>
+      <div class="divider"></div>
+      <p>Dan masih banyak cerita yang belum selesai.</p>
+    </div>
+  </section>
+
+  <!-- 05 MEMORY -->
+  <section class="page">
+    <div class="page-inner">
+      <div class="kicker">CHAPTER 04 — OUR MEMORIES</div>
+      <h2 class="memory-title">Yang pernah kita punya.</h2>
+
+      <div class="memory-grid">
+        <div class="memory-card"><img src="foto1.jpg" alt="Memory 1"></div>
+        <div class="memory-card"><img src="foto2.jpg" alt="Memory 2"></div>
+        <div class="memory-card"><img src="foto3.jpg" alt="Memory 3"></div>
+        <div class="memory-card"><img src="foto4.jpg" alt="Memory 4"></div>
+
+        <div class="memory-card memory-video">
+          <video id="memoryVideo" muted playsinline preload="auto">
+            <source src="memory-video.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <div class="memory-note">VIDEO AKAN OTOMATIS DIPUTAR SAAT BAGIAN INI TERLIHAT</div>
+    </div>
+  </section>
+
+  <!-- 06 THANK YOU -->
+  <section class="page">
+    <div class="page-inner">
+      <div class="kicker">CHAPTER 05</div>
+      <div class="quote">
+        “Terima kasih sudah hadir,
+        untuk semua tawa, cerita, perhatian,
+        dan hal-hal kecil yang membuat perjalanan ini berarti.”
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 PROMISE -->
+  <section class="page">
+    <div class="page-inner">
+      <div class="kicker">ONE MORE THING</div>
+      <h2>Aku nggak janji semuanya sempurna.</h2>
+      <p>
+        Tapi aku bisa janji satu hal:
+        selama masih ada cerita yang bisa kita tulis,
+        aku akan senang kalau kamu masih jadi bagian dari cerita itu.
+      </p>
+    </div>
+  </section>
+
+  <!-- 08 FINAL -->
+  <section class="page">
+    <div class="page-inner">
+      <div class="kicker">LAST PAGE</div>
+      <div class="final-heart">♥</div>
+      <h1>Tetap di sini,<br>sayang.</h1>
+      <div class="divider"></div>
+      <p>
+        Semoga ini hanya menjadi awal dari banyak kenangan indah
+        yang masih akan kita buat bersama.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+const intro=document.getElementById('intro');
+const fireworks=document.getElementById('fireworks');
+const music=new Audio('music.mp3');
+const video=document.getElementById('memoryVideo');
+const status=document.getElementById('musicStatus');
+
+music.loop=true;
+
+/* Intro -> fireworks -> halaman scroll */
+function openLetter(){
+  fireworks.style.display='block';
+  fireworks.innerHTML='';
+
+  for(let b=0;b<9;b++){
+    const burst=document.createElement('div');
+    burst.className='burst';
+    burst.style.left=(10+Math.random()*80)+'%';
+    burst.style.top=(15+Math.random()*55)+'%';
+    burst.style.color=['#ffb7d1','#ffdca8','#d5b8ff','#fff3c9'][b%4];
+
+    for(let k=0;k<24;k++){
+      const spark=document.createElement('i');
+      spark.className='spark';
+      spark.style.setProperty('--a',(k*15)+'deg');
+      spark.style.setProperty('--d',(55+Math.random()*110)+'px');
+      burst.appendChild(spark);
+    }
+    fireworks.appendChild(burst);
+  }
+
+  setTimeout(()=>{
+    fireworks.style.display='none';
+    fireworks.innerHTML='';
+    intro.classList.add('hide');
+    document.body.classList.remove('locked');
+    window.scrollTo({top:0,behavior:'instant'});
+  },1200);
+}
+
+/* Musik */
+function toggleMusic(){
+  if(music.paused){
+    music.play().then(()=>{
+      status.textContent='♫ MUSIC ON';
+    }).catch(()=>{
+      status.textContent='TAP AGAIN TO PLAY';
+    });
+  }else{
+    music.pause();
+    status.textContent='MUSIC OFF';
+  }
+}
+
+/* Video memory: auto-play saat masuk/terlihat */
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting && entry.intersectionRatio>=0.45){
+      video.currentTime=0;
+      video.muted=true;
+      video.play().catch(()=>{});
+    }else{
+      video.pause();
+    }
+  });
+},{threshold:[0,.45,.75]});
+
+observer.observe(video);
+
+/* Partikel romantis sepanjang halaman */
+const particleLayer=document.getElementById('particles');
+const chars=['♡','♥','✦','✧','·'];
+
+for(let n=0;n<45;n++){
+  const p=document.createElement('span');
+  p.className='particle';
+  p.textContent=chars[Math.floor(Math.random()*chars.length)];
+  p.style.left=(Math.random()*100)+'vw';
+  p.style.setProperty('--dx',(Math.random()*180-90)+'px');
+  p.style.animationDuration=(8+Math.random()*10)+'s';
+  p.style.animationDelay=(-Math.random()*18)+'s';
+  p.style.fontSize=(8+Math.random()*17)+'px';
+  particleLayer.appendChild(p);
+}
+</script>
+</body>
+</html>
